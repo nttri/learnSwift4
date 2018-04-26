@@ -10,13 +10,16 @@ import UIKit
 
 class LoadScreenViewController: UIViewController {
 
+    @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var loadingBar: UIProgressView!
     var loadingValue:Int = 0
     var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateLoadingBar), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(updateLoadingBar), userInfo: nil, repeats: true)
+        logo.layer.cornerRadius = logo.bounds.width / 2
+        logo.layer.masksToBounds = true
     }
     
     @objc func updateLoadingBar(){
@@ -26,7 +29,6 @@ class LoadScreenViewController: UIViewController {
             timer?.invalidate()
             timer = nil
         }
-        print(loadingValue)
         loadingBar.setProgress(Float(loadingValue)/100, animated: true)
     }
 
