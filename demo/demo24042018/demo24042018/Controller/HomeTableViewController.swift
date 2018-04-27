@@ -20,6 +20,8 @@ class HomeTableViewController: UITableViewController {
         Food(foodName: "Wagu Meat", foodDescription: "Put the first six ingredients and two teaspoons of salt in a large saute pan for which you have a lid, then put it on a medium heat and fry gently for eight minutes, stirring often, until the chickpeas are slightly crisp. Transfer a third of the chickpeas to a small bowl, to use as a garnish. \n In a second bowl, combine the parsley, lemon zest, capers and olives, then add two-thirds of this mix to the saute pan with the cherry tomatoes, sugar and caraway seeds, and cook for two minutes more, stirring often. \n Add the pasta, stock and 200ml water, and bring up to a simmer. Turn the heat to medium, cover with a lid and leave to cook, undisturbed, for 12-14 minutes, until the pasta is al dente.", imageName: "food8.jpg", foodRating: 5),
     ]
     
+    @IBOutlet weak var image: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
