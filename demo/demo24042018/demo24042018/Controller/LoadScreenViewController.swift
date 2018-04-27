@@ -18,7 +18,10 @@ class LoadScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         timer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(updateLoadingBar), userInfo: nil, repeats: true)
-        logo.layer.cornerRadius = logo.bounds.width / 2
+        
+        let min = logo.bounds.width > logo.bounds.height ? logo.bounds.height : logo.bounds.width
+        
+        logo.layer.cornerRadius = min / 2
         logo.layer.masksToBounds = true
     }
     
