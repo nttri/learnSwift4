@@ -35,6 +35,8 @@ class FoodTableViewCell: UITableViewCell {
         default:
             ratingLabel.text = "⭐️⭐️⭐️⭐️⭐️"
         }
+        foodImage.layer.cornerRadius = foodImage.bounds.width / 2
+        foodImage.layer.masksToBounds = true
     }
     
     override func awakeFromNib() {
