@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gdp-Zc-xdY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="demo2704_firebase" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="demo2704_firebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="806" y="337"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="cWi-7Q-nA1">
             <objects>
-                <viewController id="gdp-Zc-xdY" customClass="MainViewController" customModule="demo2704_firebase" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gdp-Zc-xdY" customClass="HomeViewController" customModule="demo2704_firebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H0V-XR-Agi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,10 +121,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature1" translatesAutoresizingMaskIntoConstraints="NO" id="gYb-rd-NPD">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="80Y-Dr-Mzd" appends="YES" id="gWY-Jc-zjN"/>
-                                    <outletCollection property="gestureRecognizers" destination="80Y-Dr-Mzd" appends="YES" id="6Rr-zu-ukj"/>
-                                </connections>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpW-3O-hIZ">
                                 <rect key="frame" x="0.0" y="20" width="165.66666666666666" height="716"/>
@@ -151,7 +147,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="logoutTouched:" destination="gdp-Zc-xdY" eventType="touchUpInside" id="2wr-4O-KtX"/>
+                                                        <action selector="logoutTouched:" destination="gdp-Zc-xdY" eventType="touchUpInside" id="3E6-Kf-HGC"/>
+                                                        <segue destination="U04-o0-n6Y" kind="unwind" unwindAction="backToHomeWithSegue:" id="egQ-Ni-xBU"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -190,15 +187,10 @@
                         <outlet property="blurView" destination="iFV-Yz-Cv1" id="M9q-5b-kiP"/>
                         <outlet property="leftMenu" destination="fpW-3O-hIZ" id="0Ja-ib-xcd"/>
                         <outlet property="leftViewConstrant" destination="1NI-cG-QTm" id="01e-gB-GsL"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="logoutSegue" id="72m-GB-ta8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ll2-IN-YXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="80Y-Dr-Mzd">
-                    <connections>
-                        <action selector="panPerformed:" destination="gdp-Zc-xdY" id="4LW-Bw-Y1u"/>
-                    </connections>
-                </panGestureRecognizer>
+                <exit id="U04-o0-n6Y" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1592.753623188406" y="336.68478260869568"/>
         </scene>
