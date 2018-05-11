@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class NewsTableViewCell: UITableViewCell {
 
@@ -16,12 +17,21 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var newsViewsCount: UILabel!
     @IBOutlet weak var newsViewsIcon: UIImageView!
     
-    func set(){
-        newsImageView.image = UIImage(named: "news")
-        newsHeader.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
-        newsSource.text = "Zing - 3 giờ trước"
-        newsViewsCount.text = "99"
-        newsViewsIcon.isHidden = false
+    func set(news: NewsModel){
+        
+        let loadingImage = UIImage(named: "sand-clock")
+        let url = URL(string: news.smallImage)!
+        newsImageView.af_setImage(withURL: url, placeholderImage: loadingImage)
+        newsHeader.text = news.header
+        newsSource.text = news.source
+        
+        if news.views == 0 {
+            newsViewsCount.text = ""
+            newsViewsIcon.isHidden = true
+        }else{
+            newsViewsCount.text = "\(news.views)"
+            newsViewsIcon.isHidden = false
+        }
     }
 
 }
