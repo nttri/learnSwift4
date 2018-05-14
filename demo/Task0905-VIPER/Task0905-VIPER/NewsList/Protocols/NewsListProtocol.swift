@@ -17,17 +17,19 @@ protocol NewsListViewProtocol: class {
 }
 
 protocol NewsListPresenterProtocol: class {
-    var view: NewsListViewProtocol? {get set}
+    var view1: NewsListViewProtocol? {get set}
+    var view2: NewsListViewProtocol? {get set}
     var router: NewsListRouterProtocol? {get set}
     var interactor: NewsListInteractorInputProtocol? {get set}
     
     // VIEW --> PRESENTER
     func viewDidLoad()
-    func viewNewsDetail(forNews news:NewsModel)
+    func viewNewsDetailFromTab1(forNews news:NewsModel)
+    func viewNewsDetailFromTab2(forNews news:NewsModel)
 }
 
 protocol NewsListRouterProtocol: class {
-    static func getNewsListView1Module() -> UIViewController
+    static func getTabbarModule() -> UIViewController
     
     // PRESENTER --> ROUTER
     func presentNewsDetailScreen(from view: NewsListViewProtocol, forNews news: NewsModel)

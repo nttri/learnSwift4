@@ -21,8 +21,13 @@ class NewsListLocalDataManager: NewsListLocalDataManagerInputProtocol{
                 if let allNews = dictionary["news"]! as? NSMutableArray{
                     for news in allNews{
                         if let news = news as? [String:AnyObject]{
-                            //print(news["id"]!)
-                            let eachNews = NewsModel(id: news["id"] as! Int, header: news["header"] as! String, content: news["content"] as! String, smallImage: news["smallImage"] as! String, largeImage: news["largeImage"] as! String, source: news["source"] as! String, views: news["views"] as! Int)
+                            let eachNews = NewsModel(id: news["id"] as! Int,
+                                                     header: news["header"] as! String,
+                                                     content: news["content"] as! String,
+                                                     smallImage: news["smallImage"] as! String,
+                                                     largeImage: news["largeImage"] as! String,
+                                                     source: news["source"] as! String,
+                                                     views: news["views"] as! Int)
                             newsList.append(eachNews)
                         }
                     }

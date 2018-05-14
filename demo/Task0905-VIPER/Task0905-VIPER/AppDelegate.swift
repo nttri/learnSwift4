@@ -13,13 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let newsList = NewsListRouter.getNewsListView1Module()
+        let rootTabbar = NewsListRouter.getTabbarModule()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = newsList
+        window?.rootViewController = rootTabbar
         window?.makeKeyAndVisible()
         
         return true

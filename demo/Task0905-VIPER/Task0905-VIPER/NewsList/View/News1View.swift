@@ -14,21 +14,15 @@ class News1View: UIViewController {
     var presenter: NewsListPresenterProtocol?
     @IBOutlet weak var tableView: UITableView!
     
-    //MARK: life cycle
+    // MARK: life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
-        updateUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-        
-    }
-    
-    //MARK: config
-    func updateUI(){
-        tableView.rowHeight = 120
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 
@@ -36,7 +30,6 @@ extension News1View: NewsListViewProtocol{
     
     func showAllNews(with allNews: [NewsModel]) {
         newsList = allNews
-        tableView.reloadData()
     }
 }
 
@@ -50,17 +43,20 @@ extension News1View: UITableViewDataSource, UITableViewDelegate{
         return newsList.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsTableViewCell
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
         cell.set(news: newsList[indexPath.row])
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("touching")
-        presenter?.viewNewsDetail(forNews: newsList[indexPath.row])
+        presenter?.viewNewsDetailFromTab1(forNews: newsList[indexPath.row])
     }
 }
 

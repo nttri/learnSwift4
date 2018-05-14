@@ -25,7 +25,13 @@ class NewsDetailView: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        updateUI()
+    }
+    
+    // MARK: config
+    func updateUI(){
         self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = true
     }
 }
 

@@ -24,7 +24,7 @@ class NewsTableViewCell: UITableViewCell {
         newsImageView.af_setImage(withURL: url, placeholderImage: loadingImage)
         newsHeader.text = news.header
         newsSource.text = news.source
-        
+
         if news.views == 0 {
             newsViewsCount.text = ""
             newsViewsIcon.isHidden = true

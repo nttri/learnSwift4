@@ -26,7 +26,7 @@ class NewsDetailRouter: NewsDetailRouterProtocol{
             presenter.view = view
             presenter.news = news
             view.presenter = presenter
-            
+
             return newsDetailVC
         }
         

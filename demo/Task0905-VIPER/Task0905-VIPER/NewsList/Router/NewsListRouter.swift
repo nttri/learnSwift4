@@ -15,23 +15,30 @@ class NewsListRouter: NewsListRouterProtocol{
         return UIStoryboard(name: "Main", bundle: Bundle.main)
     }
     
-    static func getNewsListView1Module() -> UIViewController {
+    static func getTabbarModule() -> UIViewController {
         
-        let navVC = mainStoryboard.instantiateViewController(withIdentifier: "navViewController1")
-        if let firstTabView = navVC.childViewControllers.first as? News1View {
+        let tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "RootTabbar") as! UITabBarController
+        let navigationController1 = tabBarController.childViewControllers.first as! UINavigationController
+        let navigationController2 = tabBarController.childViewControllers[1] as! UINavigationController
+        
+        if let firstTabView = navigationController1.childViewControllers.first as? News1View,
+            let secondTabView = navigationController2.childViewControllers.first as? News2View {
+            
             let presenter = NewsListPresenter()
             let interactor = NewsListInteractor()
             let router = NewsListRouter()
             let localDataManager = NewsListLocalDataManager()
             
             firstTabView.presenter = presenter
+            secondTabView.presenter = presenter
             presenter.interactor = interactor
             presenter.router = router
-            presenter.view = firstTabView
+            presenter.view1 = firstTabView
+            presenter.view2 = secondTabView
             interactor.presenter = presenter
             interactor.localDataManager = localDataManager
             
-            return navVC
+            return tabBarController
         }
         
         return UIViewController()
